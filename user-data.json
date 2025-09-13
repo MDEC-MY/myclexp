@@ -1,0 +1,46 @@
+{
+  "users": {
+    "POL02526448": {
+      "name": "ANIS SYUHADA",
+      "password": "821983515162063366",
+      "policy": "POL02526448",
+      "claim": "821983515162063366",
+      "effective": "2024-08-12",
+      "coverage": "Comprehensive Mobile Device Protection",
+      "limit": "5000",
+      "premium": "350",
+      "refund": "1745",
+      "item": "Apple iPhone 14 Pro Max",
+      "logistics": "J&T Express",
+      "tracking": "600788993515162"
+    },
+    "POL02547439": {
+      "name": "NUR AZMINA",
+      "password": "56521563098",
+      "policy": "POL02547439",
+      "claim": "56521563098",
+      "effective": "2025-08-15",
+      "coverage": "Comprehensive Mobile Device Protection",
+      "limit": "8000.00",
+      "premium": "450.00",
+      "refund": "2450.00",
+      "item": "Apple iPad Air 11",
+      "logistics": "myDHL Express",
+      "tracking": "7287654321098765"
+    },
+    "POL02542070": {
+      "name": "PMAN LEYE",
+      "password": "PASSword6$",
+      "policy": "POL02542070",
+      "claim": "27701714",
+      "effective": "2005-08-20",
+      "coverage": "Comprehensive Mobile Device Protection",
+      "limit": "10000",
+      "premium": "350",
+      "refund": "4500",
+      "item": "Apple iPhone 14 Pro Max",
+      "logistics": "J&T Express",
+      "tracking": "600788993515162"
+    }
+  }
+}
