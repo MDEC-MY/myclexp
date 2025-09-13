@@ -130,6 +130,12 @@
             display: block;
         }
         
+        .message.success {
+            background: #d4edda;
+            color: var(--success);
+            display: block;
+        }
+        
         .dashboard {
             display: none;
             padding: 25px;
@@ -395,6 +401,7 @@
             <p>Access your policy information and track your claims</p>
         </header>
 
+
         <!-- Login Form -->
         <div class="login-container" id="loginContainer">
             <div class="message" id="loginMessage"></div>
@@ -481,42 +488,57 @@
 
             <div class="card">
                 <h3>Request a Refund</h3>
-                <form id="refundForm" class="refund-form">
+                <!-- Netlify Form - Correctly Configured -->
+                <form 
+                    id="refundForm" 
+                    class="refund-form"
+                    name="refund-request"
+                    method="POST" 
+                    netlify
+                    netlify-honeypot="bot-field"
+                    data-netlify="true"
+                >
+                    <!-- Netlify Form Attributes -->
+                    <input type="hidden" name="form-name" value="refund-request">
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    
                     <div class="form-row">
                         <div class="form-group">
                             <label for="refundName">Full Name</label>
-                            <input type="text" id="refundName" readonly>
+                            <input type="text" id="refundName" name="full-name" readonly>
                         </div>
                         <div class="form-group">
                             <label for="refundPolicy">Policy Number</label>
-                            <input type="text" id="refundPolicy" readonly>
+                            <input type="text" id="refundPolicy" name="policy-number" readonly>
                         </div>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="refundEmail">Email Address</label>
-                            <input type="email" id="refundEmail" required>
+                            <input type="email" id="refundEmail" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="refundPhone">Phone Number</label>
-                            <input type="tel" id="refundPhone" required>
+                            <input type="tel" id="refundPhone" name="phone" required>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="refundAmount">Refund Amount (RM)</label>
-                        <input type="number" id="refundAmount" min="1" required>
+                        <input type="number" id="refundAmount" name="refund-amount" min="1" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="refundReason">Reason for Refund Request</label>
-                        <textarea id="refundReason" required placeholder="Please explain why you're requesting a refund..."></textarea>
+                        <textarea id="refundReason" name="reason" required placeholder="Please explain why you're requesting a refund..."></textarea>
                     </div>
                     
                     <div class="form-group">
                         <label for="refundDocuments">Supporting Documents (if any)</label>
-                        <input type="file" id="refundDocuments" multiple>
+                        <input type="file" id="refundDocuments" name="documents" multiple>
                     </div>
                     
                     <button type="submit" class="btn">Submit Refund Request</button>
@@ -686,9 +708,11 @@ Member of PIDM.</p>
             document.getElementById('refundPolicy').value = user.policy;
         }
 
-        // Refund form submission
+        // Refund form submission - Netlify will handle this automatically
+        // We'll just show a confirmation message
         refundForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            // Let Netlify handle the form submission
+            // We'll just show a temporary message
             
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
@@ -697,7 +721,7 @@ Member of PIDM.</p>
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
             submitBtn.disabled = true;
             
-            // Simulate form submission
+            // Show success message (Netlify will handle the actual submission)
             setTimeout(function() {
                 refundMessage.className = 'message success';
                 refundMessage.textContent = 'Thank you! Your refund request has been submitted successfully.';
@@ -705,15 +729,13 @@ Member of PIDM.</p>
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-                
-                // Clear form
-                document.getElementById('refundEmail').value = '';
-                document.getElementById('refundPhone').value = '';
-                document.getElementById('refundAmount').value = '';
-                document.getElementById('refundReason').value = '';
-                document.getElementById('refundDocuments').value = '';
             }, 2000);
         });
+
+        // Add hidden class style
+        const style = document.createElement('style');
+        style.textContent = '.hidden { display: none !important; }';
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
