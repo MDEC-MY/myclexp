@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyTakaful Refund Dashboard</title>
+    <title>MyTakaful Insurance Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -42,11 +42,10 @@
         }
         
         header {
-            background: white;
-            color: #007F5F;
+            background: #004d40;
+            color: white;
             padding: 25px;
             text-align: center;
-            border-bottom: 1px solid #eee;
         }
         
         .logo {
@@ -57,11 +56,6 @@
         h1 {
             font-size: 28px;
             margin-bottom: 10px;
-            color: #007F5F;
-        }
-        
-        header p {
-            color: rgba(0, 0, 0, 0.8);
         }
         
         .login-container {
@@ -72,7 +66,6 @@
         
         .form-group {
             margin-bottom: 20px;
-            position: relative;
         }
         
         .form-group label {
@@ -82,28 +75,16 @@
             color: #004d40;
         }
         
-        .input-with-icon {
-            position: relative;
-        }
-        
-        .input-with-icon i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #777;
-        }
-        
-        .input-with-icon input {
+        .form-group input {
             width: 100%;
-            padding: 14px 16px 14px 45px;
+            padding: 14px 16px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-family: 'Poppins', sans-serif;
             font-size: 16px;
         }
         
-        .input-with-icon input:focus {
+        .form-group input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(0, 127, 95, 0.1);
@@ -122,11 +103,18 @@
             text-align: center;
             width: 100%;
             font-size: 16px;
+            position: relative;
         }
         
-        .btn:hover {
+        .btn:hover:not(:disabled) {
             background: #00664d;
             transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
         }
         
         .message {
@@ -288,45 +276,49 @@
             width: auto;
         }
         
-        .logout-btn:hover {
+        .logout-btn:hover:not(:disabled) {
             background: #c0392b;
         }
         
-        /* Loading animation */
         .loading-overlay {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
-            display: flex;
-            flex-direction: column;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 1000;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
-            display: none;
+            flex-direction: column;
         }
         
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(0, 127, 95, 0.2);
-            border-radius: 50%;
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
             border-top: 5px solid var(--primary);
+            border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
+        }
+        
+        .loading-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .countdown {
+            font-size: 16px;
+            margin-top: 10px;
+            color: #586e66;
         }
         
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-        
-        .loading-text {
-            font-size: 18px;
-            color: var(--primary);
-            font-weight: 600;
         }
         
         @media (max-width: 768px) {
@@ -348,15 +340,17 @@
                 margin-right: 0;
                 margin-bottom: 15px;
             }
-            
-            .logout-btn {
-                margin: 15px 0 0 0;
-                width: 100%;
-            }
         }
     </style>
 </head>
 <body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" id="loadingText">Processing your request</div>
+        <div class="countdown" id="countdown">5 seconds remaining</div>
+    </div>
+
     <div class="container">
         <header>
             <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380.65 58.7">
@@ -396,8 +390,8 @@
       <polygon class="cls-2" points="37.22 32.62 40.49 29.35 37.22 26.09 37.22 21.48 32.61 21.48 29.35 18.21 26.09 21.48 21.48 21.48 21.48 26.09 18.21 29.35 21.48 32.62 21.48 37.23 26.09 37.23 29.35 40.49 32.61 37.23 37.22 37.22 37.22 32.62"></polygon>
     </g>
   </g>
-            </svg>
-            <h2>MyTakaful Insurance Portal</h2>
+</svg>
+            <h2>MyTakaful Refund Portal</h2>
             <p>Access your policy information and track your claims</p>
         </header>
 
@@ -407,19 +401,13 @@
             <form id="loginForm">
                 <div class="form-group">
                     <label for="policyNumber">Policy Number</label>
-                    <div class="input-with-icon">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="policyNumber" placeholder="Enter your policy number" required>
-                    </div>
+                    <input type="text" id="policyNumber" placeholder="Enter your policy number" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <div class="input-with-icon">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" placeholder="Enter your password" required>
-                    </div>
+                    <input type="password" id="password" placeholder="Enter your password" required>
                 </div>
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn" id="loginBtn">Login</button>
             </form>
         </div>
 
@@ -545,12 +533,6 @@ Member of PIDM.</p>
         </div>
     </div>
 
-    <!-- Loading Overlay -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <div class="spinner"></div>
-        <div class="loading-text">Loading your dashboard...</div>
-    </div>
-
     <script>
         // Function to load user data from JSON file
         async function loadUserData() {
@@ -603,11 +585,14 @@ Member of PIDM.</p>
         const loginContainer = document.getElementById('loginContainer');
         const dashboard = document.getElementById('dashboard');
         const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
         const loginMessage = document.getElementById('loginMessage');
         const logoutBtn = document.getElementById('logoutBtn');
         const refundForm = document.getElementById('refundForm');
         const refundMessage = document.getElementById('refundMessage');
         const loadingOverlay = document.getElementById('loadingOverlay');
+        const loadingText = document.getElementById('loadingText');
+        const countdown = document.getElementById('countdown');
 
         // Load user data on page load
         let users = {};
@@ -629,18 +614,14 @@ Member of PIDM.</p>
             const password = document.getElementById('password').value;
             
             if (users[policyNumber] && users[policyNumber].password === password) {
-                // Show loading animation
-                loadingOverlay.style.display = 'flex';
-                loginMessage.className = 'message';
-                loginMessage.textContent = '';
-                
-                // Simulate loading for 5 seconds
-                setTimeout(function() {
+                // Show loading overlay for login
+                showLoadingOverlay("Logging in to your account", function() {
                     // Successful login
                     localStorage.setItem('currentUser', policyNumber);
                     showDashboard(users[policyNumber]);
-                    loadingOverlay.style.display = 'none';
-                }, 5000);
+                    loginMessage.className = 'message';
+                    loginMessage.textContent = '';
+                });
             } else {
                 // Failed login
                 loginMessage.className = 'message error';
@@ -650,11 +631,34 @@ Member of PIDM.</p>
 
         // Logout functionality
         logoutBtn.addEventListener('click', function() {
-            localStorage.removeItem('currentUser');
-            dashboard.style.display = 'none';
-            loginContainer.style.display = 'block';
-            loginForm.reset();
+            // Show loading overlay for logout
+            showLoadingOverlay("Logging out of your account", function() {
+                localStorage.removeItem('currentUser');
+                dashboard.style.display = 'none';
+                loginContainer.style.display = 'block';
+                loginForm.reset();
+            });
         });
+
+        // Show loading overlay with countdown
+        function showLoadingOverlay(message, callback) {
+            loadingText.textContent = message;
+            loadingOverlay.style.display = 'flex';
+            
+            let seconds = 5;
+            countdown.textContent = `${seconds} seconds remaining`;
+            
+            const countdownInterval = setInterval(function() {
+                seconds--;
+                countdown.textContent = `${seconds} seconds remaining`;
+                
+                if (seconds <= 0) {
+                    clearInterval(countdownInterval);
+                    loadingOverlay.style.display = 'none';
+                    callback();
+                }
+            }, 1000);
+        }
 
         // Show user dashboard
         function showDashboard(user) {
