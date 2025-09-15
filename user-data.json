@@ -1,4 +1,4 @@
-{
+{{
   "users": {
     "POL02526448": {
       "name": "ANIS SYUHADA",
@@ -69,6 +69,48 @@
       "item": "Apple iPhone 15 Pro Max",
       "logistics": "J&T Express",
       "tracking": "680002484670505"
+    },
+    "MTA56521563": {
+      "name": "NUR ADILAH BINTI NAZRI",
+      "password": "9462727482",
+      "policy": "MTA56521563",
+      "claim": "9462727482",
+      "effective": "2024-02-15",
+      "coverage": "Comprehensive Mobile Device Protection",
+      "limit": "20,000.00",
+      "premium": "355.00",
+      "refund": "10,243.44",
+      "item": "Apple iPhone 14 Pro Max",
+      "logistics": "J&T Express",
+      "tracking": "680075419052319"
+    },
+    "MTA56521566": {
+      "name": "JASLINA BINTI MUSA",
+      "password": "3981950382",
+      "policy": "MTA56521566",
+      "claim": "3981950382",
+      "effective": "2025-05-07",
+      "coverage": "Comprehensive Mobile Device Protection",
+      "limit": "10,000.00",
+      "premium": "381.00",
+      "refund": "5,243.44",
+      "item": "Apple iPhone 14 Pro Max",
+      "logistics": "J&T Express",
+      "tracking": "680097550620978"
+    },
+    "MTA56521078": {
+      "name": "ALEEYA ADRIANA",
+      "password": "56521563098",
+      "policy": "MTA56521078",
+      "claim": "56521563098",
+      "effective": "2025-07-07",
+      "coverage": "Comprehensive Mobile Device Protection",
+      "limit": "5,000.00",
+      "premium": "250.00",
+      "refund": "1,275.00",
+      "item": "Apple iPhone 14 Pro Max",
+      "logistics": "J&T Express",
+      "tracking": "680025523771889"
     }
   }
 }
