@@ -1,4 +1,4 @@
-{{
+{
   "users": {
     "POL02526448": {
       "name": "ANIS SYUHADA",
@@ -7,9 +7,9 @@
       "claim": "821983515162063366",
       "effective": "2024-08-12",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "5,000.00",
+      "limit": "5000.00",
       "premium": "350.00",
-      "refund": "1,745.00",
+      "refund": "1745.00",
       "item": "Apple iPhone 14 Pro Max",
       "logistics": "J&T Express",
       "tracking": "600788993515162"
@@ -21,9 +21,9 @@
       "claim": "56521563098",
       "effective": "2025-08-15",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "8,000.00",
+      "limit": "8000.00",
       "premium": "450.00",
-      "refund": "2,450.00",
+      "refund": "2450.00",
       "item": "Apple iPad Air 11",
       "logistics": "myDHL Express",
       "tracking": "7287654321098765"
@@ -35,9 +35,9 @@
       "claim": "2710745618",
       "effective": "2025-01-31",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "10,000.00",
+      "limit": "10000.00",
       "premium": "550.00",
-      "refund": "5,615.00",
+      "refund": "5615.00",
       "item": "Apple iPhone 14 Pro Max",
       "logistics": "J&T Express",
       "tracking": "608865301519833"
@@ -49,9 +49,9 @@
       "claim": "2710745618",
       "effective": "2025-08-15",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "5,000.00",
+      "limit": "5000.00",
       "premium": "350.00",
-      "refund": "1,550.00",
+      "refund": "1550.00",
       "item": "Apple iPhone 14 Pro Max",
       "logistics": "J&T Express",
       "tracking": "608831287898683"
@@ -63,9 +63,9 @@
       "claim": "82197919274374394",
       "effective": "2025-08-22",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "5,000.00",
+      "limit": "5000.00",
       "premium": "229.00",
-      "refund": "1,550.00",
+      "refund": "1550.00",
       "item": "Apple iPhone 15 Pro Max",
       "logistics": "J&T Express",
       "tracking": "680002484670505"
@@ -77,9 +77,9 @@
       "claim": "9462727482",
       "effective": "2024-02-15",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "20,000.00",
+      "limit": "20000.00",
       "premium": "355.00",
-      "refund": "10,243.44",
+      "refund": "10243.44",
       "item": "Apple iPhone 14 Pro Max",
       "logistics": "J&T Express",
       "tracking": "680075419052319"
@@ -91,9 +91,9 @@
       "claim": "3981950382",
       "effective": "2025-05-07",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "10,000.00",
+      "limit": "10000.00",
       "premium": "381.00",
-      "refund": "5,243.44",
+      "refund": "5243.44",
       "item": "Apple iPhone 14 Pro Max",
       "logistics": "J&T Express",
       "tracking": "680097550620978"
@@ -105,9 +105,9 @@
       "claim": "56521563098",
       "effective": "2025-07-07",
       "coverage": "Comprehensive Mobile Device Protection",
-      "limit": "5,000.00",
+      "limit": "5000.00",
       "premium": "250.00",
-      "refund": "1,275.00",
+      "refund": "1275.00",
       "item": "Apple iPhone 14 Pro Max",
       "logistics": "J&T Express",
       "tracking": "680025523771889"
